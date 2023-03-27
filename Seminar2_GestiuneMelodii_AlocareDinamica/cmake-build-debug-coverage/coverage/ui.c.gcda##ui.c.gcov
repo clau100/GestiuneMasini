@@ -1,0 +1,301 @@
+        -:    0:Source:C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/ui.c
+        -:    0:Graph:C:\Users\user\Downloads\GestiuneMasini_AlocareDinamica\Seminar2_GestiuneMelodii_AlocareDinamica\cmake-build-debug-coverage\CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir\Seminar2_GestiuneMelodii_AlocareDinamica\ui.c.gcno
+        -:    0:Data:C:\Users\user\Downloads\GestiuneMasini_AlocareDinamica\Seminar2_GestiuneMelodii_AlocareDinamica\cmake-build-debug-coverage\CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir\Seminar2_GestiuneMelodii_AlocareDinamica\ui.c.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2://#define _CRTDBG_MAP_ALLOC
+        -:    3://#include <crtdbg.h>
+        -:    4:#include <stdio.h>
+        -:    5:
+        -:    6:#include "my_utils.h"
+        -:    7:#include "service.h"
+        -:    8:
+        -:    9:
+function testAll called 1 returned 100% blocks executed 100%
+        1:   10:void testAll() {
+        1:   10-block  0
+        1:   11:	testCreateDestroy();
+        1:   11-block  0
+call    0 returned 1
+        1:   12:	testValideaza();
+call    0 returned 1
+        1:   13:	testCreateVector();
+call    0 returned 1
+        -:   14:	
+        1:   15:	testIterate();
+call    0 returned 1
+        1:   16:	testCopy();
+call    0 returned 1
+        -:   17:	
+        -:   18:	
+        1:   19:	testAddService();
+call    0 returned 1
+        -:   20:	
+        1:   21:	testModifyService();
+call    0 returned 1
+        -:   22:	
+        1:   23:	testDeleteService();
+call    0 returned 1
+        1:   24:	testFindService();
+call    0 returned 1
+        1:   25:	testFilterService();
+call    0 returned 1
+        -:   26:
+        1:   27:    testTrim();
+call    0 returned 1
+        -:   28:	//testSortService();
+        -:   29:
+        1:   30:}
+        -:   31:
+function printAllMasini called 0 returned 0% blocks executed 0%
+    #####:   32:void printAllMasini(MyList* v) {
+    $$$$$:   32-block  0
+    #####:   33:	if (v->length == 0)
+    $$$$$:   33-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   34:		printf("Nu exista masini.\n");
+    $$$$$:   34-block  0
+call    0 never executed
+        -:   35:	else
+        -:   36:	{
+    #####:   37:		printf("Masinile curente sunt:\n");
+    $$$$$:   37-block  0
+call    0 never executed
+    #####:   38:		for (int i = 0; i < size(v); i++) {
+    $$$$$:   38-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:   39:			Masina m = get(v, i);
+    $$$$$:   39-block  0
+call    0 never executed
+    #####:   40:			printf("Nr. inmat.: %s | Model: %s | Categorie: %s\n", m.nr_inmat, m.model, m.categorie);
+call    0 never executed
+        -:   41:		}
+        -:   42:	}
+    #####:   43:}
+        -:   44:
+function printMenu called 1 returned 100% blocks executed 100%
+        1:   45:void printMenu() {
+        1:   45-block  0
+        1:   46:	printf("1. Adauga masina\n2. Actualizare masina\n");
+        1:   46-block  0
+call    0 returned 1
+        1:   47:	printf("3. Sterge masina\n4. Afiseaza toate masinile de o anumita categorie\n");
+call    0 returned 1
+        1:   48:	printf("5. Sorteaza masinie dupa nr. inmat.\n6. Tipareste toate\n0. Iesire\n");
+call    0 returned 1
+        1:   49:}
+function uiAdd called 0 returned 0% blocks executed 0%
+    #####:   50:void uiAdd(MyList* v) {
+    $$$$$:   50-block  0
+        -:   51:    char nr_inmat[30], model[30], categorie[30];
+        -:   52:	char temp;
+    #####:   53:	scanf("%c", &temp);
+    $$$$$:   53-block  0
+call    0 never executed
+    #####:   54:	printf("Numarul de inmatriculare al masinii este:");
+call    0 never executed
+    #####:   55:	fgets(nr_inmat, 30, stdin);
+call    0 never executed
+    #####:   56:	printf("Modelul masinii este:");
+call    0 never executed
+    #####:   57:	fgets(model, 30, stdin);
+call    0 never executed
+    #####:   58:	printf("Categoria masinii este:");
+call    0 never executed
+    #####:   59:	fgets(categorie, 30, stdin);
+call    0 never executed
+    #####:   60:	trimTrailing(nr_inmat);
+call    0 never executed
+    #####:   61:	trimTrailing(model);
+call    0 never executed
+    #####:   62:    trimTrailing(categorie);
+call    0 never executed
+        -:   63:
+    #####:   64:	int successful = addMasina(v,nr_inmat,model,categorie);
+call    0 never executed
+    #####:   65:	if (successful)
+branch  0 never executed
+branch  1 never executed
+    #####:   66:		printf("Masina adaugata cu succes.\n");
+    $$$$$:   66-block  0
+call    0 never executed
+        -:   67:	else
+    #####:   68:		printf("Masina invalida.\n");
+    $$$$$:   68-block  0
+call    0 never executed
+        -:   69:
+    #####:   70:}
+function uiModify called 0 returned 0% blocks executed 0%
+    #####:   71:void uiModify(MyList* v) {
+    $$$$$:   71-block  0
+        -:   72:    char nr_inmat[30], model[30], categorie[30];
+        -:   73:    char temp;
+    #####:   74:    scanf("%c", &temp);
+    $$$$$:   74-block  0
+call    0 never executed
+    #####:   75:    printf("Numarul de inmatriculare al masinii este:");
+call    0 never executed
+    #####:   76:    fgets(nr_inmat, 30, stdin);
+call    0 never executed
+    #####:   77:    printf("Modelul masinii este:");
+call    0 never executed
+    #####:   78:    fgets(model, 30, stdin);
+call    0 never executed
+    #####:   79:    printf("Categoria masinii este:");
+call    0 never executed
+    #####:   80:    fgets(categorie, 30, stdin);
+call    0 never executed
+    #####:   81:    trimTrailing(nr_inmat);
+call    0 never executed
+    #####:   82:    trimTrailing(model);
+call    0 never executed
+    #####:   83:    trimTrailing(categorie);
+call    0 never executed
+        -:   84:
+    #####:   85:	int successful = modifyMasina(v, nr_inmat, model, categorie);
+call    0 never executed
+    #####:   86:	if (successful)
+branch  0 never executed
+branch  1 never executed
+    #####:   87:		printf("Masina modificata cu succes.\n");
+    $$$$$:   87-block  0
+call    0 never executed
+        -:   88:	else
+    #####:   89:		printf("Nu exista masina cu datele date.\n");
+    $$$$$:   89-block  0
+call    0 never executed
+    #####:   90:}
+function uiDelete called 0 returned 0% blocks executed 0%
+    #####:   91:void uiDelete(MyList* v) {
+    $$$$$:   91-block  0
+        -:   92:    char nr_inmat[30];
+        -:   93:    char temp;
+    #####:   94:    scanf("%c", &temp);
+    $$$$$:   94-block  0
+call    0 never executed
+    #####:   95:    printf("Numarul de inmatriculare al masinii este:");
+call    0 never executed
+    #####:   96:    fgets(nr_inmat, 30, stdin);
+call    0 never executed
+    #####:   97:    trimTrailing(nr_inmat);
+call    0 never executed
+    #####:   98:	int successful = deleteMasina(v, nr_inmat);
+call    0 never executed
+    #####:   99:	if (successful)
+branch  0 never executed
+branch  1 never executed
+    #####:  100:		printf("Masina stearsa cu succes.\n");
+    $$$$$:  100-block  0
+call    0 never executed
+        -:  101:	else
+    #####:  102:		printf("Nu exista masina cu datele date.\n");
+    $$$$$:  102-block  0
+call    0 never executed
+    #####:  103:}
+function uiFilter called 0 returned 0% blocks executed 0%
+    #####:  104:void uiFilter(MyList* v) {
+    $$$$$:  104-block  0
+        -:  105:    char categorie[30];
+        -:  106:    char temp;
+    #####:  107:    scanf("%c", &temp);
+    $$$$$:  107-block  0
+call    0 never executed
+    #####:  108:    printf("Categoria masinii este:");
+call    0 never executed
+    #####:  109:    fgets(categorie, 30, stdin);
+call    0 never executed
+    #####:  110:    trimTrailing(categorie);
+call    0 never executed
+    #####:  111:	MyList filteredList = filterMasini(v, categorie);
+call    0 never executed
+    #####:  112:	printAllMasini(&filteredList);
+call    0 never executed
+    #####:  113:	destroy(&filteredList);
+call    0 never executed
+        -:  114:
+    #####:  115:}
+function uiSort called 0 returned 0% blocks executed 0%
+    #####:  116:void uiSort() {
+    $$$$$:  116-block  0
+        -:  117:
+    #####:  118:}
+function run called 1 returned 100% blocks executed 50%
+        1:  119:void run() {
+        1:  119-block  0
+        1:  120:	MyList songList = createEmpty();
+        1:  120-block  0
+call    0 returned 1
+        1:  121:	int running = 1;
+        2:  122:	while (running) {
+        2:  122-block  0
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+        1:  123:		printMenu();
+        1:  123-block  0
+call    0 returned 1
+        -:  124:		int cmd;
+        1:  125:		printf("Comanda este:");
+call    0 returned 1
+        1:  126:		scanf("%d", &cmd);
+call    0 returned 1
+        1:  127:		switch (cmd) {
+branch  0 taken 0
+branch  1 taken 0
+branch  2 taken 0
+branch  3 taken 0
+branch  4 taken 0
+branch  5 taken 1
+branch  6 taken 0
+        -:  128:		case 1:
+    #####:  129:			uiAdd(&songList);
+    $$$$$:  129-block  0
+call    0 never executed
+    #####:  130:			break;
+        -:  131:		case 2:
+    #####:  132:			uiModify(&songList);
+    $$$$$:  132-block  0
+call    0 never executed
+    #####:  133:			break;
+        -:  134:		case 3:
+    #####:  135:			uiDelete(&songList);
+    $$$$$:  135-block  0
+call    0 never executed
+    #####:  136:			break;
+        -:  137:		case 4:
+    #####:  138:			uiFilter(&songList);
+    $$$$$:  138-block  0
+call    0 never executed
+    #####:  139:			break;
+        -:  140:		case 6:
+    #####:  141:			printAllMasini(&songList);
+    $$$$$:  141-block  0
+call    0 never executed
+    #####:  142:			break;
+        -:  143:		case 0:
+        1:  144:			running = 0;
+        1:  145:			destroy(&songList);
+        1:  145-block  0
+call    0 returned 1
+        1:  146:			break;
+        -:  147:		default:
+        1:  148:			printf("Comanda invalida!\n");
+    $$$$$:  148-block  0
+call    0 never executed
+        1:  148-block  1
+        -:  149:
+        -:  150:		}
+        -:  151:	}
+        1:  152:}
+function main called 1 returned 100% blocks executed 100%
+        1:  153:int main() {
+        1:  153-block  0
+        1:  154:	testAll();
+        1:  154-block  0
+call    0 returned 1
+        1:  155:	run();
+call    0 returned 1
+        -:  156:}

@@ -1,0 +1,3 @@
+C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/cmake-build-debug-coverage/CMakeFiles/Seminar2_GestiuneMelodii_AlocareDinamica.dir
+C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir

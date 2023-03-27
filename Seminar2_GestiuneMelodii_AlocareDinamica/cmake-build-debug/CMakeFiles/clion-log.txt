@@ -1,0 +1,4 @@
+C:\Users\user\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\user\Downloads\GestiuneMasini_AlocareDinamica\Seminar2_GestiuneMelodii_AlocareDinamica -B C:\Users\user\Downloads\GestiuneMasini_AlocareDinamica\Seminar2_GestiuneMelodii_AlocareDinamica\cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/cmake-build-debug

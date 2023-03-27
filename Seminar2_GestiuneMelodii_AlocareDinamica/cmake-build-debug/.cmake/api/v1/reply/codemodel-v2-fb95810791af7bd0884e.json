@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Seminar2_GestiuneMelodii_AlocareDinamica",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Seminar2_GestiuneMelodii_AlocareDinamica::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Seminar2_GestiuneMelodii_AlocareDinamica-Debug-b8da9c2dd2969b66bcc4.json",
+					"name" : "Seminar2_GestiuneMelodii_AlocareDinamica",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/cmake-build-debug",
+		"source" : "C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

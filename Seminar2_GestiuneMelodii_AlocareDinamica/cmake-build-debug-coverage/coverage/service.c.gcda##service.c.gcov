@@ -1,0 +1,514 @@
+        -:    0:Source:C:/Users/user/Downloads/GestiuneMasini_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/Seminar2_GestiuneMelodii_AlocareDinamica/service.c
+        -:    0:Graph:C:\Users\user\Downloads\GestiuneMasini_AlocareDinamica\Seminar2_GestiuneMelodii_AlocareDinamica\cmake-build-debug-coverage\CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir\Seminar2_GestiuneMelodii_AlocareDinamica\service.c.gcno
+        -:    0:Data:C:\Users\user\Downloads\GestiuneMasini_AlocareDinamica\Seminar2_GestiuneMelodii_AlocareDinamica\cmake-build-debug-coverage\CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir\Seminar2_GestiuneMelodii_AlocareDinamica\service.c.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:#include "service.h"
+        -:    3:#include <assert.h>
+        -:    4:#include <string.h>
+function addMasina called 16 returned 100% blocks executed 100%
+       16:    5:int addMasina(MyList* v, char* nr_inmat, char* model, char* categorie) {
+       16:    5-block  0
+       16:    6:	Masina m = createMasina(nr_inmat, model, categorie);
+       16:    6-block  0
+call    0 returned 16
+       16:    7:	int successful = valideazaMasina(m);
+call    0 returned 16
+       16:    8:	if (!successful) {
+branch  0 taken 2 (fallthrough)
+branch  1 taken 14
+        2:    9:		destroyMasina(&m);
+        2:    9-block  0
+call    0 returned 2
+        2:   10:		return 0;
+        -:   11:	}
+       14:   12:	add(v, m);
+       14:   12-block  0
+call    0 returned 14
+       16:   13:	return 1;
+       16:   13-block  0
+        -:   14:
+        -:   15:}
+function findMasina called 5 returned 100% blocks executed 100%
+        5:   16:int findMasina(MyList* v, char* nr_inmat) {
+        5:   16-block  0
+        5:   17:	int poz_to_delete = -1;
+       11:   18:	for (int i = 0; i < v->length; i++) {
+        5:   18-block  0
+        6:   18-block  1
+       11:   18-block  2
+branch  0 taken 9
+branch  1 taken 2 (fallthrough)
+        9:   19:		Masina m = get(v, i);
+        9:   19-block  0
+call    0 returned 9
+        9:   20:		if (strcmp(m.nr_inmat, nr_inmat) == 0) {
+branch  0 taken 3 (fallthrough)
+branch  1 taken 6
+        3:   21:			poz_to_delete = i;
+        3:   22:			break;
+        3:   22-block  0
+        -:   23:		}
+        -:   24:	}
+        5:   25:	return poz_to_delete;
+        5:   25-block  0
+        -:   26:}
+function deleteMasina called 2 returned 100% blocks executed 100%
+        2:   27:int deleteMasina(MyList* v, char* nr_inmat) {
+        2:   27-block  0
+        2:   28:	int poz_to_delete = findMasina(v, nr_inmat);
+        2:   28-block  0
+call    0 returned 2
+        2:   29:	if (poz_to_delete != -1) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   30:		Masina m = delete(v, poz_to_delete);
+        1:   30-block  0
+call    0 returned 1
+        1:   31:		destroyMasina(&m);
+call    0 returned 1
+        1:   32:		return 1;
+        -:   33:	}
+        -:   34:	else
+        1:   35:		return 0;
+        1:   35-block  0
+        -:   36:}
+function modifyMasina called 2 returned 100% blocks executed 100%
+        2:   37:int modifyMasina(MyList* v, char* nr_inmat, char* model, char* categorie) {
+        2:   37-block  0
+        2:   38:	int poz_to_delete = findMasina(v, nr_inmat);
+        2:   38-block  0
+call    0 returned 2
+        2:   39:	if (poz_to_delete != -1) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   40:		Masina masinaNoua = createMasina(nr_inmat, model, categorie);
+        1:   40-block  0
+call    0 returned 1
+        1:   41:		Masina m = get(v, poz_to_delete);
+call    0 returned 1
+        1:   42:		destroyMasina(&m);
+call    0 returned 1
+        1:   43:		setElem(v, poz_to_delete, masinaNoua);
+call    0 returned 1
+        1:   44:		return 1;
+        -:   45:	}
+        -:   46:	else
+        1:   47:		return 0;
+        1:   47-block  0
+        -:   48:}
+function filterMasini called 3 returned 100% blocks executed 100%
+        3:   49:MyList filterMasini(MyList* v, char* categorie) {
+        3:   49-block  0
+        -:   50:	
+        3:   51:	if (strcmp(categorie, "") != 0) {
+        3:   51-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   52:		MyList filteredList = createEmpty();
+        2:   52-block  0
+call    0 returned 2
+       10:   53:		for (int i = 0; i < v->length; i++) {
+        8:   53-block  0
+       10:   53-block  1
+branch  0 taken 8
+branch  1 taken 2 (fallthrough)
+        8:   54:			Masina m = get(v, i);
+        8:   54-block  0
+call    0 returned 8
+        8:   55:			if (strcmp(categorie, m.categorie) == 0)
+branch  0 taken 2 (fallthrough)
+branch  1 taken 6
+        2:   56:				add(&filteredList, createMasina(m.nr_inmat, m.model, m.categorie));
+        2:   56-block  0
+call    0 returned 2
+call    1 returned 2
+        -:   57:		}
+        2:   58:		return filteredList;
+        2:   58-block  0
+        -:   59:	}
+        -:   60:	else {
+        1:   61:		return copyList(v);
+        1:   61-block  0
+call    0 returned 1
+        -:   62:	}
+        -:   63:	
+        -:   64:}
+        -:   65://MyList sortMelodii(MyList* v) {
+        -:   66://	
+        -:   67://}
+        -:   68:
+function testAddService called 1 returned 100% blocks executed 68%
+        1:   69:void testAddService() {
+        1:   69-block  0
+        1:   70:	MyList v = createEmpty();
+        1:   70-block  0
+call    0 returned 1
+        -:   71:
+        1:   72:	int successful1 = addMasina(&v, "BH14ECM", "Seat Ibiza", "Coupe");
+call    0 returned 1
+        1:   73:	assert(successful1 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   73-block  0
+call    2 never executed
+        -:   74:
+        1:   75:	int successful2 = addMasina(&v, "", "", "Coupe");
+        1:   75-block  0
+call    0 returned 1
+        1:   76:	assert(successful2 == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   76-block  0
+call    2 never executed
+        -:   77:
+        1:   78:	int successful3 = addMasina(&v, "BH19CLD", "Ford Mondeo", "");
+        1:   78-block  0
+call    0 returned 1
+        1:   79:	assert(successful3 == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   79-block  0
+call    2 never executed
+        -:   80:
+        1:   81:	assert(size(&v) == 1);
+        1:   81-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:   81-block  1
+call    3 never executed
+        1:   82:	Masina m = get(&v, 0);
+        1:   82-block  0
+call    0 returned 1
+        -:   83:
+        1:   84:	assert(strcmp(m.nr_inmat, "BH14ECM") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   84-block  0
+call    2 never executed
+        1:   85:	assert(strcmp(m.model, "Seat Ibiza") == 0);
+        1:   85-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   85-block  1
+call    2 never executed
+        1:   86:	assert(strcmp(m.categorie, "Coupe") == 0);
+        1:   86-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   86-block  1
+call    2 never executed
+        1:   87:	destroy(&v);
+        1:   87-block  0
+call    0 returned 1
+        -:   88:
+        -:   89:
+        1:   90:}
+function testFindService called 1 returned 100% blocks executed 71%
+        1:   91:void testFindService() {
+        1:   91-block  0
+        1:   92:	MyList v = createEmpty();
+        1:   92-block  0
+call    0 returned 1
+        -:   93:
+        1:   94:	int successful1 = addMasina(&v, "BH14ECM", "Seat Ibiza", "Coupe");
+call    0 returned 1
+        1:   95:	assert(successful1 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   95-block  0
+call    2 never executed
+        -:   96:
+        1:   97:	int successful2 = addMasina(&v, "BH19CLD", "Ford Mondeo", "Docker");
+        1:   97-block  0
+call    0 returned 1
+        1:   98:	assert(successful2 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:   98-block  0
+call    2 never executed
+        -:   99:
+        1:  100:	int successful3 = addMasina(&v, "B77TTT", "Chevrolet Aveo", "SUV");
+        1:  100-block  0
+call    0 returned 1
+        1:  101:	assert(successful3 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  101-block  0
+call    2 never executed
+        -:  102:
+        1:  103:	assert(size(&v) == 3);
+        1:  103-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  103-block  1
+call    3 never executed
+        1:  104:	int poz = findMasina(&v, "BH19CLD");
+        1:  104-block  0
+call    0 returned 1
+        -:  105:
+        1:  106:	assert(poz == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  106-block  0
+call    2 never executed
+        -:  107:
+        1:  108:	destroy(&v);
+        1:  108-block  0
+call    0 returned 1
+        1:  109:	assert(size(&v) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  109-block  0
+call    3 never executed
+        1:  110:}
+function testModifyService called 1 returned 100% blocks executed 71%
+        1:  111:void testModifyService() {
+        1:  111-block  0
+        1:  112:	MyList v = createEmpty();
+        1:  112-block  0
+call    0 returned 1
+        -:  113:
+        1:  114:	int successful1 = addMasina(&v, "BH19CLD", "Seat Ibiza", "Coupe");
+call    0 returned 1
+        1:  115:	assert(successful1 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  115-block  0
+call    2 never executed
+        -:  116:
+        1:  117:	int successful2 = addMasina(&v, "BH14ECM", "Ford Mondeo", "Docker");
+        1:  117-block  0
+call    0 returned 1
+        1:  118:	assert(successful2 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  118-block  0
+call    2 never executed
+        -:  119:
+        1:  120:	int successful3 = addMasina(&v, "B77TTT", "Chevrolet Aveo", "SUV");
+        1:  120-block  0
+call    0 returned 1
+        1:  121:	assert(successful3 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  121-block  0
+call    2 never executed
+        -:  122:
+        1:  123:	assert(size(&v) == 3);
+        1:  123-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  123-block  1
+call    3 never executed
+        1:  124:	int modify_success = modifyMasina(&v, "BH19CLD", "Ford Mondeo", "Docker");
+        1:  124-block  0
+call    0 returned 1
+        1:  125:	assert(modify_success == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  125-block  0
+call    2 never executed
+        1:  126:	int modify_success2 = modifyMasina(&v, "B19CLD", "Seat Ibiza", "Coupe");
+        1:  126-block  0
+call    0 returned 1
+        1:  127:	assert(modify_success2 == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  127-block  0
+call    2 never executed
+        1:  128:	destroy(&v);
+        1:  128-block  0
+call    0 returned 1
+        1:  129:}
+function testDeleteService called 1 returned 100% blocks executed 71%
+        1:  130:void testDeleteService() {
+        1:  130-block  0
+        1:  131:	MyList v = createEmpty();
+        1:  131-block  0
+call    0 returned 1
+        -:  132:
+        1:  133:	int successful1 = addMasina(&v, "BH19CLD", "Seat Ibiza", "Coupe");
+call    0 returned 1
+        1:  134:	assert(successful1 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  134-block  0
+call    2 never executed
+        -:  135:
+        1:  136:	int successful2 = addMasina(&v, "BH14ECM", "Ford Mondeo", "Docker");
+        1:  136-block  0
+call    0 returned 1
+        1:  137:	assert(successful2 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  137-block  0
+call    2 never executed
+        -:  138:
+        1:  139:	int successful3 = addMasina(&v, "B77TTT", "Chevrolet Aveo", "SUV");
+        1:  139-block  0
+call    0 returned 1
+        1:  140:	assert(successful3 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  140-block  0
+call    2 never executed
+        -:  141:
+        1:  142:	assert(size(&v) == 3);
+        1:  142-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  142-block  1
+call    3 never executed
+        1:  143:	int succesful_del = deleteMasina(&v, "BH19CLD");
+        1:  143-block  0
+call    0 returned 1
+        1:  144:	assert(succesful_del == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  144-block  0
+call    2 never executed
+        1:  145:	int succesfully_del = deleteMasina(&v, "B19CLD");
+        1:  145-block  0
+call    0 returned 1
+        1:  146:	assert(succesfully_del == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  146-block  0
+call    2 never executed
+        1:  147:	destroy(&v);
+        1:  147-block  0
+call    0 returned 1
+        1:  148:	assert(size(&v) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  148-block  0
+call    3 never executed
+        1:  149:}
+        -:  150:
+function testFilterService called 1 returned 100% blocks executed 76%
+        1:  151:void testFilterService() {
+        1:  151-block  0
+        1:  152:	MyList v = createEmpty();
+        1:  152-block  0
+call    0 returned 1
+        -:  153:
+        1:  154:	int successful1 = addMasina(&v, "BH19CLD", "Seat Ibiza", "Coupe");
+call    0 returned 1
+        1:  155:	assert(successful1 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  155-block  0
+call    2 never executed
+        -:  156:
+        1:  157:	int successful2 = addMasina(&v, "BH14ECM", "Ford Mondeo", "Docker");
+        1:  157-block  0
+call    0 returned 1
+        1:  158:	assert(successful2 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  158-block  0
+call    2 never executed
+        -:  159:
+        1:  160:	int successful4 = addMasina(&v, "B77TTT", "Chevrolet Aveo", "SUV");
+        1:  160-block  0
+call    0 returned 1
+        1:  161:	assert(successful4 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  161-block  0
+call    2 never executed
+        -:  162:
+        1:  163:	int successful3 = addMasina(&v, "BH07TTT", "Volkswagen Passat", "Docker");
+        1:  163-block  0
+call    0 returned 1
+        1:  164:	assert(successful3 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    $$$$$:  164-block  0
+call    2 never executed
+        -:  165:
+        1:  166:	assert(size(&v) == 4);
+        1:  166-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  166-block  1
+call    3 never executed
+        -:  167:
+        1:  168:	MyList filteredList = filterMasini(&v, "Docker");
+        1:  168-block  0
+call    0 returned 1
+        1:  169:	assert(size(&filteredList) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  169-block  0
+call    3 never executed
+        1:  170:	destroy(&filteredList);
+        1:  170-block  0
+call    0 returned 1
+        -:  171:
+        1:  172:	filteredList = filterMasini(&v, "Mini");
+call    0 returned 1
+        1:  173:	assert(size(&filteredList) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  173-block  0
+call    3 never executed
+        1:  174:	destroy(&filteredList);
+        1:  174-block  0
+call    0 returned 1
+        -:  175:
+        -:  176:
+        -:  177:
+        1:  178:	filteredList = filterMasini(&v, "");
+call    0 returned 1
+        1:  179:	assert(size(&filteredList) == 4);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    $$$$$:  179-block  0
+call    3 never executed
+        1:  180:	destroy(&filteredList);
+        1:  180-block  0
+call    0 returned 1
+        -:  181:
+        1:  182:	destroy(&v);
+call    0 returned 1
+        -:  183:
+        1:  184:}
+        -:  185://void testSortService() {
+        -:  186://	MyList v = createEmpty();
+        -:  187://
+        -:  188://	int successful1 = addMelodie(&v, "Child in Time", "Deep Purple", 59);
+        -:  189://	assert(successful1 == 1);
+        -:  190://
+        -:  191://	int successful2 = addMelodie(&v, "Kashmir", "Led Zeppelin", 56);
+        -:  192://	assert(successful2 == 1);
+        -:  193://
+        -:  194://	int successful4 = addMelodie(&v, "When The Levee Breaks", "Led Zeppelin", 58);
+        -:  195://	assert(successful4 == 1);
+        -:  196://
+        -:  197://	int successful3 = addMelodie(&v, "(Don't fear) The Reaper", "Blue Oyster Cult", 76);
+        -:  198://	assert(successful3 == 1);
+        -:  199://
+        -:  200://	assert(size(&v) == 4);
+        -:  201://	MyList sortedList = sortMelodii(&v);
+        -:  202://	assert(get(&sortedList, 0).durata == 56);
+        -:  203://	assert(get(&sortedList, 1).durata == 58);
+        -:  204://	assert(get(&sortedList, 2).durata == 59);
+        -:  205://	assert(get(&sortedList, 3).durata == 76);
+        -:  206://
+        -:  207://
+        -:  208://	destroy(&sortedList);
+        -:  209://	destroy(&v);
+        -:  210://}

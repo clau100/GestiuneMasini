@@ -1,0 +1,3 @@
+C:\Users\user\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir/objects.a @CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir/objects.a -Wl,--no-whole-archive -o Seminar2_GestiuneMelodii_AlocareDinamica.exe -Wl,--out-implib,libSeminar2_GestiuneMelodii_AlocareDinamica.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Seminar2_GestiuneMelodii_AlocareDinamica.dir\linklibs.rsp
